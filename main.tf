@@ -12,7 +12,8 @@ resource "aws_identitystore_user" "example" {
   }
 
   emails {
-    value = each.value
+    primary = true
+    type = "work"
   }
 }
 resource "aws_identitystore_group" "this" {
@@ -23,7 +24,7 @@ resource "aws_identitystore_group" "this" {
 }
 
 resource "aws_identitystore_group_membership" "example" {
-  for_each = local.managed_groups
+  for_each          = local.managed_groups
   identity_store_id = tolist(data.aws_ssoadmin_instances.example.identity_store_ids)[0]
   group_id          = data.aws_identitystore_group.id_group[each.value.group].id
   member_id         = data.aws_identitystore_user.id_user[each.value.user].id

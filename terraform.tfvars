@@ -10,6 +10,6 @@ user_in_group = [
 
   {
     user   = "abhishek.majumdar@infracloud.io"
-    groups = ["InfoSec-team","Inception"]
+    groups = ["InfoSec-team", "Inception"]
   }
 ]

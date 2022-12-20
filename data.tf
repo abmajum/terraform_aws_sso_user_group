@@ -1,7 +1,7 @@
 data "aws_ssoadmin_instances" "example" {}
 
 data "aws_identitystore_user" "id_user" {
-  for_each = toset(var.users)
+  for_each          = toset(var.users)
   identity_store_id = tolist(data.aws_ssoadmin_instances.example.identity_store_ids)[0]
 
   alternate_identifier {
