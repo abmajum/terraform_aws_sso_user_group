@@ -1,5 +1,4 @@
 # Managing Identity Store Users and Groups with Terraform
----------------------------------------------------------
 To add users,groups and adding users in groups do changes in ```terraform.tfvars```
 - For adding users
 ```agsl
