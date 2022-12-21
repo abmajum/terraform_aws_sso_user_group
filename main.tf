@@ -1,20 +1,23 @@
 
 resource "aws_identitystore_user" "example" {
-  for_each          = toset(var.users)
+  for_each          = var.users
   identity_store_id = tolist(data.aws_ssoadmin_instances.example.identity_store_ids)[0]
 
-  display_name = format("%s %s",title(split(".",split("@",each.value)[0])[0]), title(split(".",split("@",each.value)[0])[1]))
-  user_name    = each.value
+  #display_name = format("%s %s", title(split(".", split("@", each.value)[0])[0]), title(split(".", split("@", each.value)[0])[1]))
+  display_name = each.value["display_name"]
+  user_name    = each.value["user_name"]
 
   name {
-    given_name  = title(split(".",split("@",each.value)[0])[0])
-    family_name = title(split(".",split("@",each.value)[0])[1])
+    #given_name  = title(split(".", split("@", each.value)[0])[0])
+    #family_name = title(split(".", split("@", each.value)[0])[1])
+    given_name  = each.value["given_name"]
+    family_name = each.value["family_name"]
   }
 
   emails {
-    value= each.value
+    value   = each.value["user_name"]
     primary = true
-    type = "work"
+    type    = "work"
   }
 }
 resource "aws_identitystore_group" "this" {

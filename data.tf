@@ -1,13 +1,13 @@
 data "aws_ssoadmin_instances" "example" {}
 
 data "aws_identitystore_user" "id_user" {
-  for_each          = toset(var.users)
+  for_each          = var.users
   identity_store_id = tolist(data.aws_ssoadmin_instances.example.identity_store_ids)[0]
 
   alternate_identifier {
     unique_attribute {
       attribute_path  = "UserName"
-      attribute_value = each.key
+      attribute_value = each.value.user_name
     }
   }
 }
