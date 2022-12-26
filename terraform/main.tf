@@ -18,15 +18,15 @@ resource "aws_identitystore_user" "example" {
   }
 }
 resource "aws_identitystore_group" "this" {
-  for_each          = toset(var.groups)
-  display_name      = each.value
-  description       = each.value
+  for_each          = {for g in var.groups:  g.DisplayName => g}
+  display_name      = each.value.DisplayName
+  description       = each.value.Description
   identity_store_id = tolist(data.aws_ssoadmin_instances.example.identity_store_ids)[0]
 }
 
 resource "aws_identitystore_group_membership" "example" {
   for_each          = local.managed_groups
   identity_store_id = tolist(data.aws_ssoadmin_instances.example.identity_store_ids)[0]
-  group_id          = data.aws_identitystore_group.id_group[each.value.group].id
+  group_id          = split("/",aws_identitystore_group.this[each.value.group].id)[1]
   member_id         = split("/",aws_identitystore_user.example[each.value.user].id)[1]
 }
