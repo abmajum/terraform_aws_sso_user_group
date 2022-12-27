@@ -24,7 +24,16 @@ users = [
 ```
 - For adding Groups
 ```agsl
-groups = ["Inception", "InfoSec-team"]
+groups = [
+    {
+        "DisplayName": "AWSSecurityAuditors",
+        "Description": "Read-only access to all accounts for security audits"
+    },
+    {
+        "DisplayName": "InfoSec-team",
+        "Description": null
+    }
+]
 ```
 - For adding a user in Multiple Groups
 ```agsl
