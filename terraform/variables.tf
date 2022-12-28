@@ -13,9 +13,9 @@ variable "users" {
 #  }))
 #}
 
-variable "user_in_group" {
-  type = list(object({
-    group   = string
-    users = list(string)
-  }))
-}
+#variable "user_in_group" {
+#  type = list(object({
+#    group   = string
+#    users = list(string)
+#  }))
+#}

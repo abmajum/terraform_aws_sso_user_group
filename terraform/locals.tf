@@ -1,7 +1,7 @@
 locals {
 
   goal = flatten([
-    for grp in var.user_in_group : [
+    for grp in var.groups : [
       for usr in grp.users : {
         group  = grp.group
         user = usr

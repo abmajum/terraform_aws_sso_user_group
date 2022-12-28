@@ -11,8 +11,7 @@ user_map={}
 #fetching list of all the users using list_users function
 response = client.list_users( IdentityStoreId=IdentityStoreId)
 for user in response['Users']:
-    print("terraform import \'aws_identitystore_user.example[\"",user['UserName'],"\"]\'", IdentityStoreId ,"/",user['UserId'], sep='')
-    print (user)
+    print("terraform import \'aws_identitystore_user.example[\"",user['UserName'],"\"]\' ", IdentityStoreId ,"/",user['UserId'], sep='')
     #Creating a user map for each user to be used in terraform.vars
     user_map["UserName"] = user["UserName"]
     user_map["DisplayName"] = user["DisplayName"]

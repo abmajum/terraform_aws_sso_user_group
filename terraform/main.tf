@@ -18,9 +18,9 @@ resource "aws_identitystore_user" "example" {
   }
 }
 resource "aws_identitystore_group" "this" {
-  for_each          = {for g in var.groups:  g.DisplayName => g}
-  display_name      = each.value.DisplayName
-  description       = each.value.Description
+  for_each          = {for g in var.groups:  g.group => g}
+  display_name      = each.value.group
+  description       = each.value.description
   identity_store_id = tolist(data.aws_ssoadmin_instances.example.identity_store_ids)[0]
 }
 

@@ -21,7 +21,7 @@ user_in_group=[]
 for group in response['Groups']:
     #Initialising an empty membership map for each group. 
     #It will contain the group name and list of all the users in that group
-    m_map={"group": group['DisplayName'],"users": []}
+    m_map={"group": group['DisplayName'], "description": group.get('Description'), "users": []}
     #Fetching group membership for each group
     membership=client.list_group_memberships(IdentityStoreId=IdentityStoreId,GroupId=group['GroupId'])
     #list_group_membership returns list of memberships, where each member of the list represents one user in that group
