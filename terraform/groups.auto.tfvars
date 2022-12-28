@@ -1,7 +1,48 @@
 groups = [
     {
+        "group": "AWSSecurityAuditors",
+        "description": "Read-only access to all accounts for security audits",
+        "users": []
+    },
+    {
+        "group": "Managed-service-dev",
+        "description": "Group for managed service dev team",
+        "users": [
+            "vishal@infracloud.io",
+            "amar.chand@infracloud.io",
+            "rayan.das@infracloud.io",
+            "sarvanand.jannu@infracloud.io",
+            "mohammed.l@infracloud.io",
+            "richa.mishra@infracloud.io",
+            "nikhil.purva@infracloud.io",
+            "ninad@infracloud.io"
+        ]
+    },
+    {
+        "group": "AWSControlTowerAdmins",
+        "description": "Admin rights to AWS Control Tower core and provisioned accounts",
+        "users": [
+            "security+main@infracloud.io"
+        ]
+    },
+    {
+        "group": "InfoSec-team",
+        "description": null,
+        "users": [
+            "ayesha.saha@infracloud.io",
+            "nitesh@infracloud.io",
+            "gaurav@infracloud.io",
+            "varun.kumar@infracloud.io"
+        ]
+    },
+    {
         "group": "AWSAuditAccountAdmins",
         "description": "Admin rights to cross-account audit account",
+        "users": []
+    },
+    {
+        "group": "AWSSecurityAuditPowerUsers",
+        "description": "Power user access to all accounts for security audits",
         "users": []
     },
     {
@@ -34,54 +75,8 @@ groups = [
         ]
     },
     {
-        "group": "AWSControlTowerAdmins",
-        "description": "Admin rights to AWS Control Tower core and provisioned accounts",
-        "users": [
-            "security+main@infracloud.io"
-        ]
-    },
-    {
-        "group": "Managed-service-dev",
-        "description": "Group for managed service dev team",
-        "users": [
-            "vishal@infracloud.io",
-            "amar.chand@infracloud.io",
-            "rayan.das@infracloud.io",
-            "sarvanand.jannu@infracloud.io",
-            "mohammed.l@infracloud.io",
-            "richa.mishra@infracloud.io",
-            "nikhil.purva@infracloud.io",
-            "ninad@infracloud.io"
-        ]
-    },
-    {
-        "group": "AWSLogArchiveViewers",
-        "description": "Read-only access to log archive account",
-        "users": []
-    },
-    {
         "group": "AWSServiceCatalogAdmins",
         "description": "Admin rights to account factory in AWS Service Catalog",
-        "users": []
-    },
-    {
-        "group": "InfoSec-team",
-        "description": null,
-        "users": [
-            "ayesha.saha@infracloud.io",
-            "nitesh@infracloud.io",
-            "gaurav@infracloud.io",
-            "varun.kumar@infracloud.io"
-        ]
-    },
-    {
-        "group": "AWSSecurityAuditPowerUsers",
-        "description": "Power user access to all accounts for security audits",
-        "users": []
-    },
-    {
-        "group": "AWSLogArchiveAdmins",
-        "description": "Admin rights to log archive account",
         "users": []
     },
     {
@@ -93,9 +88,13 @@ groups = [
         ]
     },
     {
-        "group": "AWSSecurityAuditors",
-        "description": "Read-only access to all accounts for security audits",
+        "group": "AWSLogArchiveViewers",
+        "description": "Read-only access to log archive account",
+        "users": []
+    },
+    {
+        "group": "AWSLogArchiveAdmins",
+        "description": "Admin rights to log archive account",
         "users": []
     }
 ]
-
