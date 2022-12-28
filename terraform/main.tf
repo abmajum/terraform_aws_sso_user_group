@@ -30,3 +30,4 @@ resource "aws_identitystore_group_membership" "example" {
   group_id          = split("/",aws_identitystore_group.this[each.value.group].id)[1]
   member_id         = split("/",aws_identitystore_user.example[each.value.user].id)[1]
 }
+

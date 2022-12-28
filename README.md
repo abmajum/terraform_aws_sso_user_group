@@ -1,7 +1,7 @@
 # Managing Identity Store Users and Groups with Terraform
 Perform all the actions in the ```terraform``` directory.<br>
-To add users,groups and adding users in groups do changes in ```terraform.tfvars```
-- For adding users
+To add users,groups and adding users in groups do changes in corresponding files.
+- For adding users edit `terraform/users.auto.tfvars`
 ```agsl
 users = [
     {
@@ -22,7 +22,7 @@ users = [
     }
 ]
 ```
-- For adding Groups
+- For adding Groups edit `terraform/groups.auto.tfvars`
 ```agsl
 groups = [
     {
@@ -35,7 +35,7 @@ groups = [
     }
 ]
 ```
-- For adding a user in Multiple Groups
+- For adding a user in Multiple Groups edit `terraform/user_in_group.auto.tfvars`
 ```agsl
 user_in_group = [
   {
@@ -49,3 +49,4 @@ user_in_group = [
   }
 ]
 ```
+```ag
