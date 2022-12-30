@@ -22,31 +22,24 @@ users = [
     }
 ]
 ```
-- For adding Groups edit `terraform/groups.auto.tfvars`
-```agsl
-groups = [
-    {
-        "DisplayName": "AWSSecurityAuditors",
-        "Description": "Read-only access to all accounts for security audits"
-    },
-    {
-        "DisplayName": "InfoSec-team",
-        "Description": null
-    }
-]
-```
-- For adding a user in Multiple Groups edit `terraform/user_in_group.auto.tfvars`
+- For adding new Groups or add user in Multiple Groups edit `terraform/user_in_group.auto.tfvars`
 ```agsl
 user_in_group = [
-  {
-    group   = "Inception"
-    users = ["vaibhav.gupta@infracloud.io"]
-  },
-
-  {
-    group   = "InfoSec-team"
-    users = ["vaibhav.gupta@infracloud.io", "abhishek.majumdar@infracloud.io"]
-  }
-]
+    {
+        "group": "AWSControlTowerAdmins",
+        "description": "Admin rights to AWS Control Tower core and provisioned accounts",
+        "users": [
+            "security+main@infracloud.io"
+        ]
+    },
+    {
+        "group": "InfoSec-team",
+        "description": null,
+        "users": [
+            "ayesha.saha@infracloud.io",
+            "nitesh@infracloud.io",
+            "gaurav@infracloud.io",
+            "varun.kumar@infracloud.io"
+        ]
+    }
 ```
-```ag
