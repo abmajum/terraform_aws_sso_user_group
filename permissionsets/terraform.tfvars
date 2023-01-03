@@ -1,5 +1,13 @@
 permission_sets = {
-"AWSServiceCatalogAdminFullAccess": {
+    "AWSServiceCatalogEndUserAccess": {
+        "description": "Provides access to the AWS Service Catalog end user console",
+        "session_duration": "PT1H",
+        "managed_policies": [
+            "arn:aws:iam::aws:policy/AWSServiceCatalogEndUserFullAccess"
+        ],
+        "inline_policy": "{\"Version\": \"2012-10-17\",\"Statement\": [{\"Sid\": \"AWSControlTowerAccountFactoryAccess\",\"Effect\": \"Allow\",\"Action\": [\"sso:GetProfile\",\"sso:CreateProfile\", \"sso:UpdateProfile\",\"sso:AssociateProfile\",\"sso:CreateApplicationInstance\",\"sso:GetSSOStatus\",\"sso:GetTrust\",\"sso:CreateTrust\",\"sso:UpdateTrust\",\"sso:GetPeregrineStatus\",\"sso:GetApplicationInstance\",\"sso:ListDirectoryAssociations\",\"sso:ListPermissionSets\",\"sso:GetPermissionSet\",\"sso:ProvisionApplicationInstanceForAWSAccount\",\"sso:ProvisionApplicationProfileForAWSAccountInstance\",\"sso:ProvisionSAMLProvider\",\"sso:ListProfileAssociations\",\"sso-directory:ListMembersInGroup\",\"sso-directory:SearchGroups\",\"sso-directory:SearchGroupsWithGroupName\",\"sso-directory:SearchUsers\",\"sso-directory:CreateUser\",\"sso-directory:DescribeGroups\",\"sso-directory:DescribeDirectory\",\"sso-directory:GetUserPoolInfo\",\"controltower:CreateManagedAccount\",\"controltower:DescribeManagedAccount\",\"controltower:DeregisterManagedAccount\",\"s3:GetObject\",\"organizations:describeOrganization\",\"sso:DescribeRegisteredRegions\"],\"Resource\": \"*\"}]}"
+    },
+    "AWSServiceCatalogAdminFullAccess": {
         "description": "Provides full access to AWS Service Catalog admin capabilities",
         "session_duration": "PT1H",
         "managed_policies": [
@@ -71,6 +79,7 @@ permission_sets = {
         ]
     }
 }
+
 
 # account_assignments = [
 # {
