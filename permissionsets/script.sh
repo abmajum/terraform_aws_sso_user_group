@@ -21,6 +21,10 @@ done
 
 for val in ${StringArray[*]}; do
   for val2 in $(${managedpolicy} ${val} | jq -r ".AttachedManagedPolicies[].Arn"); do
-   echo "terraform import 'aws_ssoadmin_managed_policy_attachment.this[$(${permissionset} ${val} | jq -r ".PermissionSet.Name").${val2}]' ${val2},${val},arn:aws:sso:::instance/ssoins-6595b36b2cbf3a38"
+   echo "terraform import 'aws_ssoadmin_managed_policy_attachment.this[\"$(${permissionset} ${val} | jq -r ".PermissionSet.Name").${val2}\"]' ${val2},${val},arn:aws:sso:::instance/ssoins-6595b36b2cbf3a38"
    done
+done
+
+for val in ${StringArray[*]}; do
+  echo "terraform import 'aws_ssoadmin_permission_set_inline_policy.this[\"$(${permissionset} ${val} | jq -r ".PermissionSet.Name")\"]' ${val},arn:aws:sso:::instance/ssoins-6595b36b2cbf3a38"
 done
