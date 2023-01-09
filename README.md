@@ -43,7 +43,7 @@ user_in_group = [
         ]
     }
 ```
-- For adding permission sets edit `terraform/permissionsets.auto.tfvars`. The inline policy should be in string format.
+- For adding permission sets edit `terraform/permissionsets.auto.tfvars`. Managed Policies is a list. In case of mentioning inline policy it should be in string format.
 ```agsl
 permission_sets = {
     "AWSServiceCatalogEndUserAccess": {
