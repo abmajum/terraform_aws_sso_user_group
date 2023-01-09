@@ -80,18 +80,3 @@ permission_sets = {
     }
 }
 
-
-# account_assignments = [
-# {
-#     principal_name = "ninad@infracloud.io"
-#     principal_type = "USER"
-#     permission_set = "AdministratorAccess"
-#     account_ids    = [393188027970,527360621799,798799997]
-# },
-# {
-#     principal_name = "ninad@infracloud.io"
-#     principal_type = "USER"
-#     permission_set = "AWSPowerUserAccess"
-#     account_ids    = [527360621799]
-# }
-# ]
