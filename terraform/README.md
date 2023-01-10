@@ -39,7 +39,7 @@ users = [
 | Name | Description | Type | If unset |
 |------|-------------|:----:|:-----:|
 | group | (Required) The name of the Group you want to be present. | string | Provider default behavior |
-| description | (Optional) The description of the Group. | string | Provider default behavior |
+| description | (Required) The description of the Group. | string | Provider default behavior |
 | users | (Optional) The users needed to be part of the Group. If unset group will be created with zero users | string | Provider default behavior |
 ```agsl
 user_in_group = [
