@@ -18,4 +18,4 @@ Before this module can be used, please ensure that the following pre-requisites 
 
 ## Usage
 ----
-To 
+Follow [Managing Identity Store resources with Terraform](https://github.com/abhi-aws15/identitystore_user_group/blob/master/terraform/README.md) guide to setup variables and create,destroy & manage resources.
