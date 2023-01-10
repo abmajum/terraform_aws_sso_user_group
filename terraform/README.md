@@ -1,7 +1,17 @@
-# Managing Identity Store Users and Groups with Terraform
+# Managing Identity Store resources with Terraform
 Perform all the actions in the ```terraform``` directory.<br>
 To add users,groups and adding users in groups do changes in corresponding files.
-- For adding users edit `terraform/users.auto.tfvars`
+- For adding users edit `terraform/users.auto.tfvars`. 
+`users` is a list of lists which have the following keys/value pairs.
+
+| Name | Description | Type | If unset |
+|------|-------------|:----:|:-----:|
+| UserName | (Required) The email id of the user. | string | Provider default behavior |
+| DisplayName | (Required) The name that is typically displayed when the user is referenced. | string | Provider default behavior |
+| FamilyName | (optional) last name. | string | Provider default behavior |
+| GivenName | (optional) First name. | string | Provider default behavior |
+| Primary | ((Optional) When true, this is the primary email associated with the user. | string | Provider default behavior |
+| Type | (Optional) The type of email. | string | Provider default behavior |
 ```agsl
 users = [
     {
@@ -23,6 +33,14 @@ users = [
 ]
 ```
 - For adding new Groups or add user in Multiple Groups edit `terraform/user_in_group.auto.tfvars`
+
+`user_in_group` is a list of maps which have the following keys/value pairs.
+
+| Name | Description | Type | If unset |
+|------|-------------|:----:|:-----:|
+| group | (Required) The name of the Group you want to be present. | string | Provider default behavior |
+| description | (Optional) The description of the Group. | string | Provider default behavior |
+| users | (Optional) The users needed to be part of the Group. If unset group will be created with zero users | string | Provider default behavior |
 ```agsl
 user_in_group = [
     {
@@ -43,7 +61,18 @@ user_in_group = [
         ]
     }
 ```
-- For adding permission sets edit `terraform/permissionsets.auto.tfvars`. Managed Policies is a list. In case of mentioning inline policy it should be in string format.
+- For adding permission sets edit `terraform/permissionsets.auto.tfvars`. 
+`permission_sets` is a map of maps. Key is used as unique value for `for_each` resources. Inner map has the following keys/value pairs.
+
+| Name | Description | Type | If unset |
+|------|-------------|:----:|:-----:|
+| description | (Optional) The description of the Permission Set. | string | Provider default behavior |
+| relay\_state | (Optional) The relay state URL used to redirect users within the application during the federation authentication process | string | Provider default behavior. |
+| session\_duration | (Optional) The length of time that the application user sessions are valid in the ISO-8601 standard | string | Provider default behavior. |
+| tags | (Optional) Key-value map of resource tags. | string | Provider default behavior |
+| managed\_policies | (Optional) List of Managed IAM policies that are attached to permission set. | list(string) | Managed Policies not set. |
+| inline\_policy | (Optional) Inline policy that is attached to permission set. | string | Inline policy not set. |
+
 ```agsl
 permission_sets = {
     "AWSServiceCatalogEndUserAccess": {
