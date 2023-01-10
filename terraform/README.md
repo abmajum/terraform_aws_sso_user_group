@@ -8,10 +8,10 @@ To add users,groups and adding users in groups do changes in corresponding files
 |------|-------------|:----:|:-----:|
 | UserName | (Required) The email id of the user. | string | Provider default behavior |
 | DisplayName | (Required) The name that is typically displayed when the user is referenced. | string | Provider default behavior |
-| FamilyName | (optional) last name. | string | Provider default behavior |
-| GivenName | (optional) First name. | string | Provider default behavior |
-| Primary | ((Optional) When true, this is the primary email associated with the user. | string | Provider default behavior |
-| Type | (Optional) The type of email. | string | Provider default behavior |
+| FamilyName | (Required) last name. | string | Provider default behavior |
+| GivenName | (Required) First name. | string | Provider default behavior |
+| Primary | ((Required) When true, this is the primary email associated with the user. | string | Provider default behavior |
+| Type | (Required) The type of email. | string | Provider default behavior |
 ```agsl
 users = [
     {
