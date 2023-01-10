@@ -1,65 +1,21 @@
-# Managing Identity Store Users and Groups with Terraform
-Perform all the actions in the ```terraform``` directory.<br>
-To add users,groups and adding users in groups do changes in corresponding files.
-- For adding users edit `terraform/users.auto.tfvars`
-```agsl
-users = [
-    {
-        "UserName": "vaibhav.gupta@infracloud.io",
-        "DisplayName": "Vaibhav Gupta",
-        "FamilyName": "Gupta",
-        "GivenName": "Vaibhav",
-        "Primary": true,
-        "Type": "work"
-    },
-    {
-        "UserName": "abhishek.majumdar@infracloud.io",
-        "DisplayName": "Abhishek Majumdar",
-        "FamilyName": "Majumdar",
-        "GivenName": "Abhishek",
-        "Primary": true,
-        "Type": "work"
-    }
-]
-```
-- For adding new Groups or add user in Multiple Groups edit `terraform/user_in_group.auto.tfvars`
-```agsl
-user_in_group = [
-    {
-        "group": "AWSControlTowerAdmins",
-        "description": "Admin rights to AWS Control Tower core and provisioned accounts",
-        "users": [
-            "security+main@infracloud.io"
-        ]
-    },
-    {
-        "group": "InfoSec-team",
-        "description": null,
-        "users": [
-            "ayesha.saha@infracloud.io",
-            "nitesh@infracloud.io",
-            "gaurav@infracloud.io",
-            "varun.kumar@infracloud.io"
-        ]
-    }
-```
-- For adding permission sets edit `terraform/permissionsets.auto.tfvars`. Managed Policies is a list. In case of mentioning inline policy it should be in string format.
-```agsl
-permission_sets = {
-    "AWSServiceCatalogEndUserAccess": {
-        "description": "Provides access to the AWS Service Catalog end user console",
-        "session_duration": "PT1H",
-        "managed_policies": [
-            "arn:aws:iam::aws:policy/AWSServiceCatalogEndUserFullAccess"
-        ],
-        "inline_policy": "{\"Version\": \"2012-10-17\",\"Statement\": [{\"Sid\": \"AWSControlTowerAccountFactoryAccess\",\"Effect\": \"Allow\",\"Action\": [\"sso:GetProfile\",\"sso:CreateProfile\", \"sso:UpdateProfile\",\"sso:AssociateProfile\",\"sso:CreateApplicationInstance\",\"sso:GetSSOStatus\",\"sso:GetTrust\",\"sso:CreateTrust\",\"sso:UpdateTrust\",\"sso:GetPeregrineStatus\",\"sso:GetApplicationInstance\",\"sso:ListDirectoryAssociations\",\"sso:ListPermissionSets\",\"sso:GetPermissionSet\",\"sso:ProvisionApplicationInstanceForAWSAccount\",\"sso:ProvisionApplicationProfileForAWSAccountInstance\",\"sso:ProvisionSAMLProvider\",\"sso:ListProfileAssociations\",\"sso-directory:ListMembersInGroup\",\"sso-directory:SearchGroups\",\"sso-directory:SearchGroupsWithGroupName\",\"sso-directory:SearchUsers\",\"sso-directory:CreateUser\",\"sso-directory:DescribeGroups\",\"sso-directory:DescribeDirectory\",\"sso-directory:GetUserPoolInfo\",\"controltower:CreateManagedAccount\",\"controltower:DescribeManagedAccount\",\"controltower:DeregisterManagedAccount\",\"s3:GetObject\",\"organizations:describeOrganization\",\"sso:DescribeRegisteredRegions\"],\"Resource\": \"*\"}]}"
-    },
-    "AWSServiceCatalogAdminFullAccess": {
-        "description": "Provides full access to AWS Service Catalog admin capabilities",
-        "session_duration": "PT1H",
-        "managed_policies": [
-            "arn:aws:iam::aws:policy/AWSServiceCatalogAdminFullAccess"
-        ]
-    }
-}
-```
+# AWS SSO Terraform
+----
+This module helps in the creation and management of aws identitystore users, groups, permission-sets.
+- This repository contains 3 directories which are as follows:
+1. ```import_script```: It contains the bash scripts to import the existing terraform resources in the infrastructure.
+
+2. ```python```: It contains the boto3 scripts to get the data, genrate terraform import commands and genrate variables.
+
+3. ```terraform```: It contains terraform resources to manage the resources.
+
+## Pre-requisites
+----
+Before this module can be used, please ensure that the following pre-requisites are met:
+
+- Enable AWS Control Tower or AWS Organizations and add AWS Accounts you want to be managed by SSO.
+- Enable AWS SSO if you are using AWS Organizations.
+- Ensure that Terraform is using a role with permissions required for AWS SSO management or have admintrator privileges.
+
+## Usage
+----
+To 
