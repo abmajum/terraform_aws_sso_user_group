@@ -63,3 +63,20 @@ permission_sets = {
     }
 }
 ```
+- For account assignments. principal_type can be ``GROUP/USER`` , principal_name is the name of the respective principal_type
+```agsl
+account_assignments = [
+{
+  principal_name = "Inception"
+  principal_type = "GROUP"
+  permission_set = "AdministratorAccess"
+  account_ids    = [xxxxxxxxxx,yyyyyyyyyy,zzzzzzzzzz]
+},
+{
+  principal_name = "Inception"
+  principal_type = "GROUP"
+  permission_set = "AWSPowerUserAccess"
+  account_ids    = [xxxxxxxxxx,zzzzzzzzzz]
+}
+]
+```
