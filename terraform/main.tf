@@ -69,3 +69,16 @@ resource "aws_ssoadmin_customer_managed_policy_attachment" "this" {
   }
 }
 
+resource "aws_ssoadmin_account_assignment" "example" {
+  for_each = { for assignment in var.account_assignments: format("%s.%s.%s",assignment.AccountId,assignment.PermissionSetArn,assignment.PrincipalId) => assignment }
+
+  instance_arn       = local.ssoadmin_instance_arn
+  permission_set_arn = each.value.PermissionSetArn
+
+  principal_id   = each.value.PrincipalId
+  principal_type = each.value.PrincipalType
+
+  target_id   = each.value.AccountId
+  target_type = "AWS_ACCOUNT"
+}
+
